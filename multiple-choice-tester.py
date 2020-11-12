@@ -69,8 +69,8 @@ def read_dataframe_from_csv_file(file_path):
 
 
 def print_all_available_version_options():
-    print(str(VERSION_ONE_CODE_NUMBER) + ") \t" + "PAGE 1")
-    print(str(VERSION_TWO_CODE_NUMBER) + ") \t" + "PAGE 2")
+    print(str(VERSION_ONE_CODE_NUMBER) + ") \t" + "VERSION 1")
+    print(str(VERSION_TWO_CODE_NUMBER) + ") \t" + "VERSION 2")
 
 
 def print_all_available_page_options(version):
