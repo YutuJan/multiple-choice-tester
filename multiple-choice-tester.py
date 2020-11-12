@@ -6,17 +6,30 @@ from random import shuffle
 import pandas as pd
 # from string import ascii_lowercase
 
-PAGE_ONE_FILE_PATH = "./page1.csv"
-PAGE_TWO_FILE_PATH = "./page2.csv"
-PAGE_THREE_FILE_PATH = "./page3.csv"
-PAGE_FOUR_FILE_PATH = "./page4.csv"
-PAGE_FIVE_FILE_PATH = "./page5.csv"
+VERSION_ONE_PAGE_ONE_FILE_PATH = "./version_1/page1.csv"
+VERSION_ONE_PAGE_TWO_FILE_PATH = "./version_1/page2.csv"
+VERSION_ONE_PAGE_THREE_FILE_PATH = "./version_1/page3.csv"
+VERSION_ONE_PAGE_FOUR_FILE_PATH = "./version_1/page4.csv"
+VERSION_ONE_PAGE_FIVE_FILE_PATH = "./version_1/page5.csv"
+
+VERSION_TWO_PAGE_ONE_FILE_PATH = "./version_2/page1.csv"
+VERSION_TWO_PAGE_TWO_FILE_PATH = "./version_2/page2.csv"
+VERSION_TWO_PAGE_THREE_FILE_PATH = "./version_2/page3.csv"
+VERSION_TWO_PAGE_FOUR_FILE_PATH = "./version_2/page4.csv"
+VERSION_TWO_PAGE_FIVE_FILE_PATH = "./version_2/page5.csv"
+VERSION_TWO_PAGE_SIX_FILE_PATH = "./version_2/page6.csv"
+VERSION_TWO_PAGE_SEVEN_FILE_PATH = "./version_2/page7.csv"
+
+VERSION_ONE_CODE_NUMBER = 1
+VERSION_TWO_CODE_NUMBER = 2
 
 PAGE_ONE_CODE_NUMBER = 1
 PAGE_TWO_CODE_NUMBER = 2
 PAGE_THREE_CODE_NUMBER = 3
 PAGE_FOUR_CODE_NUMBER = 4
 PAGE_FIVE_CODE_NUMBER = 5
+PAGE_SIX_CODE_NUMBER = 6
+PAGE_SEVEN_CODE_NUMBER = 7
 
 
 def printProgressBar(
@@ -55,37 +68,64 @@ def read_dataframe_from_csv_file(file_path):
         sys.exit()
 
 
-def print_all_available_options():
-    print(str(PAGE_ONE_CODE_NUMBER) + ") \t" + "PAGE 1")
-    print(str(PAGE_TWO_CODE_NUMBER) + ") \t" + "PAGE 2")
-    print(str(PAGE_THREE_CODE_NUMBER) + ") \t" + "PAGE 3")
-    print(str(PAGE_FOUR_CODE_NUMBER) + ") \t" + "PAGE 4")
-    print(str(PAGE_FIVE_CODE_NUMBER) + ") \t" + "PAGE 5")
+def print_all_available_version_options():
+    print(str(VERSION_ONE_CODE_NUMBER) + ") \t" + "PAGE 1")
+    print(str(VERSION_TWO_CODE_NUMBER) + ") \t" + "PAGE 2")
 
 
-def load_chosen_pages(model_code):
+def print_all_available_page_options(version):
+    if (version == 1):
+        print(str(PAGE_ONE_CODE_NUMBER) + ") \t" + "PAGE 1")
+        print(str(PAGE_TWO_CODE_NUMBER) + ") \t" + "PAGE 2")
+        print(str(PAGE_THREE_CODE_NUMBER) + ") \t" + "PAGE 3")
+        print(str(PAGE_FOUR_CODE_NUMBER) + ") \t" + "PAGE 4")
+        print(str(PAGE_FIVE_CODE_NUMBER) + ") \t" + "PAGE 5")
+    elif (version == 2):
+        print(str(PAGE_ONE_CODE_NUMBER) + ") \t" + "PAGE 1")
+        print(str(PAGE_TWO_CODE_NUMBER) + ") \t" + "PAGE 2")
+        print(str(PAGE_THREE_CODE_NUMBER) + ") \t" + "PAGE 3")
+        print(str(PAGE_FOUR_CODE_NUMBER) + ") \t" + "PAGE 4")
+        print(str(PAGE_FIVE_CODE_NUMBER) + ") \t" + "PAGE 5")
+        print(str(PAGE_SIX_CODE_NUMBER) + ") \t" + "PAGE 6")
+        print(str(PAGE_SEVEN_CODE_NUMBER) + ") \t" + "PAGE 7")
+    else:
+        pass
+        #TODO
+
+
+def load_chosen_pages(version, model_code):
     chosen_dataframe = pd.DataFrame()
 
-    if (model_code == PAGE_ONE_CODE_NUMBER):
-        file_path = PAGE_ONE_FILE_PATH
-        chosen_dataframe = read_dataframe_from_csv_file(file_path)
+    if (version == 1):
+        if (model_code == PAGE_ONE_CODE_NUMBER):
+            file_path = VERSION_ONE_PAGE_ONE_FILE_PATH
+        if (model_code == PAGE_TWO_CODE_NUMBER):
+            file_path = VERSION_ONE_PAGE_TWO_FILE_PATH
+        if (model_code == PAGE_THREE_CODE_NUMBER):
+            file_path = VERSION_ONE_PAGE_THREE_FILE_PATH
+        if (model_code == PAGE_FOUR_CODE_NUMBER):
+            file_path = VERSION_ONE_PAGE_FOUR_FILE_PATH
+        if (model_code == PAGE_FIVE_CODE_NUMBER):
+            file_path = VERSION_ONE_PAGE_FIVE_FILE_PATH
+    elif (version == 2):
+        if (model_code == PAGE_ONE_CODE_NUMBER):
+            file_path = VERSION_TWO_PAGE_ONE_FILE_PATH
+        if (model_code == PAGE_TWO_CODE_NUMBER):
+            file_path = VERSION_TWO_PAGE_TWO_FILE_PATH
+        if (model_code == PAGE_THREE_CODE_NUMBER):
+            file_path = VERSION_TWO_PAGE_THREE_FILE_PATH
+        if (model_code == PAGE_FOUR_CODE_NUMBER):
+            file_path = VERSION_TWO_PAGE_FOUR_FILE_PATH
+        if (model_code == PAGE_FIVE_CODE_NUMBER):
+            file_path = VERSION_TWO_PAGE_FIVE_FILE_PATH
+        if (model_code == PAGE_SIX_CODE_NUMBER):
+            file_path = VERSION_TWO_PAGE_SIX_FILE_PATH
+        if (model_code == PAGE_SEVEN_CODE_NUMBER):
+            file_path = VERSION_TWO_PAGE_SEVEN_FILE_PATH
+    else:
+        return chosen_dataframe
 
-    if (model_code == PAGE_TWO_CODE_NUMBER):
-        file_path = PAGE_TWO_FILE_PATH
-        chosen_dataframe = read_dataframe_from_csv_file(file_path)
-
-    if (model_code == PAGE_THREE_CODE_NUMBER):
-        file_path = PAGE_THREE_FILE_PATH
-        chosen_dataframe = read_dataframe_from_csv_file(file_path)
-
-    if (model_code == PAGE_FOUR_CODE_NUMBER):
-        file_path = PAGE_FOUR_FILE_PATH
-        chosen_dataframe = read_dataframe_from_csv_file(file_path)
-
-    if (model_code == PAGE_FIVE_CODE_NUMBER):
-        file_path = PAGE_FIVE_FILE_PATH
-        chosen_dataframe = read_dataframe_from_csv_file(file_path)
-
+    chosen_dataframe = read_dataframe_from_csv_file(file_path)
     return chosen_dataframe
 
 
@@ -102,24 +142,46 @@ def ask_user_a_yes_or_no_question(question):
             continue
 """
 
-
-def ask_user_for_page_code_numbers():
+def ask_user_for_version_number():
     while True:
-        print_all_available_options()
+        print_all_available_version_options()
+        try:
+            version_number = int(input("Your version preference:").strip())
+        except ValueError:
+            print("Please enter an valid integer")
+            continue
+        
+        return version_number
+
+def ask_user_for_page_code_numbers(version):
+    while True:
+        print_all_available_page_options(version)
         try:
             page_codes = [int(x.strip()) for x in input("Your page preference:").split(",")]
         except ValueError:
             print("Please enter an valid integer or integers")
             continue
 
-        for page_code in page_codes:
-            if (page_code != PAGE_ONE_CODE_NUMBER) and \
-                    (page_code != PAGE_TWO_CODE_NUMBER) and \
-                    (page_code != PAGE_THREE_CODE_NUMBER) and \
-                    (page_code != PAGE_FOUR_CODE_NUMBER) and \
-                    (page_code != PAGE_FIVE_CODE_NUMBER):
-                print("Please enter an valid integer or integers")
-                continue
+        if (version == 1):
+            for page_code in page_codes:
+                if (page_code != PAGE_ONE_CODE_NUMBER) and \
+                        (page_code != PAGE_TWO_CODE_NUMBER) and \
+                        (page_code != PAGE_THREE_CODE_NUMBER) and \
+                        (page_code != PAGE_FOUR_CODE_NUMBER) and \
+                        (page_code != PAGE_FIVE_CODE_NUMBER):
+                    print("Please enter an valid integer or integers")
+                    continue
+        if (version == 2):
+            for page_code in page_codes:
+                if (page_code != PAGE_ONE_CODE_NUMBER) and \
+                        (page_code != PAGE_TWO_CODE_NUMBER) and \
+                        (page_code != PAGE_THREE_CODE_NUMBER) and \
+                        (page_code != PAGE_FOUR_CODE_NUMBER) and \
+                        (page_code != PAGE_FIVE_CODE_NUMBER) and \
+                        (page_code != PAGE_SIX_CODE_NUMBER) and \
+                        (page_code != PAGE_SEVEN_CODE_NUMBER):
+                    print("Please enter an valid integer or integers")
+                    continue
 
         return page_codes
 
@@ -197,12 +259,13 @@ def print_right_answers(dataframe_with_all_user_answers):
             "/" + str(len(dataframe_with_all_user_answers)))
 
 
-page_codes = ask_user_for_page_code_numbers()
+version_number = ask_user_for_version_number()
+page_codes = ask_user_for_page_code_numbers(version_number)
 temp_list_of_dataframes = list()
 dataframe = pd.DataFrame()
 
 for page_code in page_codes:
-    temp_list_of_dataframes.append(load_chosen_pages(page_code))
+    temp_list_of_dataframes.append(load_chosen_pages(version_number, page_code))
 
 dataframe = temp_list_of_dataframes.pop()
 while (len(temp_list_of_dataframes) >= 1):
